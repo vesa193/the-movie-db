@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, useRoutes } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const Home = () => 'Home page';
+    const Movies = () => 'MOVEIS PAGE';
+    const TvShows = () => 'TV SHOWS PAGE';
 
-export default App;
+    const routes = useRoutes([
+        { path: '/', element: <Home /> },
+        { path: 'movies', element: <Movies /> },
+        { path: 'tv-shows', element: <TvShows /> },
+    ]);
+
+    return routes;
+};
+
+const AppWrapper = () => (
+    <Router>
+        <App />
+    </Router>
+);
+
+export default AppWrapper;

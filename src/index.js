@@ -1,37 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import reducers from './store/rootReducer'
-import rootSaga from './store/rootSaga'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { getConfig } from './appConfig'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import reducers from './store/rootReducer';
+import rootSaga from './store/rootSaga';
+import AppWrapper from './App';
+import { getConfig } from './appConfig';
 import reportWebVitals from './reportWebVitals';
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
-let middleware = applyMiddleware(sagaMiddleware)
+let middleware = applyMiddleware(sagaMiddleware);
 if (getConfig().general.isReduxDevToolsOn) {
-	middleware = composeWithDevTools(applyMiddleware(sagaMiddleware))
+    middleware = composeWithDevTools(applyMiddleware(sagaMiddleware));
 }
 
-export const store = createStore(
-	reducers,
-	middleware
-)
+export const store = createStore(reducers, middleware);
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={ store }>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            <AppWrapper />
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

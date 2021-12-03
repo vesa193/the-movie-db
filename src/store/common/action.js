@@ -1,7 +1,5 @@
-import { INIT_APP } from "./consts"
+import { INIT_APP } from './consts';
 
-export const initAppAction = () => {
-  return {
-    type: INIT_APP
-  }
-}
+export const initAppAction = () => ({
+    type: INIT_APP,
+});

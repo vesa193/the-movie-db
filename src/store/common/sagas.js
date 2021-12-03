@@ -16,4 +16,3 @@
 //       yield put({ type: IS_LOADER_ACTIVE, isLoading: false })
 //   }
 // }
-

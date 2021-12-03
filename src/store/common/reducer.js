@@ -1,15 +1,13 @@
-
 const initialState = {
-  anyProp: null
-}
+    anyProp: null,
+};
 
 function commonReducer(state = initialState, action) {
-  const { type } = action
-	switch (type) {
-
-	default:
-		return state
-	}
+    const { type } = action;
+    switch (type) {
+        default:
+            return state;
+    }
 }
 
-export default commonReducer
+export default commonReducer;
